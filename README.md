@@ -1,5 +1,7 @@
 # babel-plugin-transform-minify-gql-template-literals
 
+[![Build Status](https://travis-ci.org/Jalle19/babel-plugin-transform-minify-gql-template-literals.svg?branch=master)](https://travis-ci.org/Jalle19/babel-plugin-transform-minify-gql-template-literals)
+
 A Babel transform plugin that minifies `gql` template literals
 
 ## Rationale
