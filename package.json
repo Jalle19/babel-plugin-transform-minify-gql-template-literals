@@ -1,0 +1,17 @@
+{
+  "name": "babel-plugin-transform-minify-gql-template-literals",
+  "version": "1.0.0",
+  "description": "A Babel plugin that minifies gql template literals",
+  "main": "src/index.js",
+  "repository": "https://github.com/Jalle19/babel-plugin-transform-minify-gql-template-literals",
+  "author": "Sam Stenvall <sam.stenvall@digia.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "jest": "^23.6.0"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
