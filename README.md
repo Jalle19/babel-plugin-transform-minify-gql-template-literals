@@ -11,9 +11,15 @@ When you use `graphql-tag` in a project there are basically two ways to deal wit
 * Defining them inline using the `gql` template literal
 * Defining them in separate files and using the accompanied Babel loader to load queries
 
-If you use the `gql` template literal, you can optionally have Babel pre-compile the queries into AST. This increases performance at the cost of larger bundle sizes. However, if you don't want to pre-compile your queries (maybe you have a lot of them and the bundle size increase is not worth the performance gains), you've basically been out of luck.
+If you use the `gql` template literal, you can optionally have Babel pre-compile the queries into AST. This increases runtime performance at the cost of larger bundle sizes and longer build times. However, if you don't want to pre-compile your queries (maybe you have a lot of them and the bundle size increase is not worth the performance gains), you've basically been out of luck.
 
 What this plugin does is it minifies the contents of your `gql` template literals so your bundle size can be kept as small as possible.
+
+### How it works
+
+The plugin works on the raw string content only. Some other implementations have resorted to using graphql-js to parse the query, which in my opinion is just overcomplicating things.
+
+The work on this plugin was inspired by the talk from Ivan Goncharov at GraphQL Finland 2018. The talk is available at https://www.youtube.com/watch?v=AeEFjFHehnM.
 
 ## Usage
 
