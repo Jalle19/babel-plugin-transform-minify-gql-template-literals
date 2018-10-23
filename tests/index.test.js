@@ -41,9 +41,10 @@ const query = gql\`
       edges {
         node {
           type
-          # We'll only need the title
+          # We'll only need the title and the description
           ... on Article {
             title
+            description
           }
           # And the publish date (let's use a separate fragment for that)
           ... PublishDate
