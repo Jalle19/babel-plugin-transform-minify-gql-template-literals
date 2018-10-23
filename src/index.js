@@ -9,10 +9,8 @@ module.exports = ({ types: t }) => {
     // Converti all whitespace to spaces
     minified = minified.replace(/[\s]+/g, ' ');
 
-    // Strip spaces around {, }, and ...
-    minified = minified.replace(/\s*{\s*/g, '{');
-    minified = minified.replace(/\s*}\s*/g, '}');
-    minified = minified.replace(/\s*\.\.\.\s*/g, '...');
+    // Strip spaces around {, }, :, [, ], and ...
+    minified = minified.replace(/\s*([{}:\[\]]|\.\.\.)\s*/g, '$1');
 
     // Trim the resulting string
     minified = minified.trim();
