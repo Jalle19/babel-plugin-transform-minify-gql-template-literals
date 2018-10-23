@@ -47,14 +47,15 @@ Make sure to include the plugin as early in your plugin chain as possible, other
 The following query:
 
 ```graphql
-query GetArticles($first:Int!) {
-  contents(types:[Article],first:$first) {
+query GetArticles($first: Int!) {
+  contents(types: [Article], first: $first) {
     edges {
       node {
         type
-        # We'll only need the title
+        # We'll only need the title and the description
         ... on Article {
           title
+          description
         }
         # And the publish date (let's use a separate fragment for that)
         ... PublishDate
@@ -71,10 +72,10 @@ fragment PublishDate on PublishableInterface {
 Will be converted into:
 
 ```graphql
-query GetArticles($first:Int!){contents(types:[Article]first:$first){edges{node{type ... on Article{title}... PublishDate}}}} fragment PublishDate on PublishableInterface{publishedAt}
+query GetArticles($first:Int!){contents(types:[Article]first:$first){edges{node{type...on Article{title description}...PublishDate}}}}fragment PublishDate on PublishableInterface{publishedAt}
 ```
 
-This saves 197 B from the query size, a reduction of about 50 percent.
+This reduces the query size from 427 to 192 bytes, a 55% reduction
 
 ## Contributing
 

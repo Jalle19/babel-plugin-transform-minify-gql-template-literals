@@ -1,0 +1,20 @@
+query GetArticles($first: Int!) {
+  contents(types: [Article], first: $first) {
+    edges {
+      node {
+        type
+        # We'll only need the title and the description
+        ... on Article {
+          title
+          description
+        }
+        # And the publish date (let's use a separate fragment for that)
+        ... PublishDate
+      }
+    }
+  }
+}
+
+fragment PublishDate on PublishableInterface {
+  publishedAt
+}
