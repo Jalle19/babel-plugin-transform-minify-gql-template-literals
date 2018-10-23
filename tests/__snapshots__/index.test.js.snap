@@ -7,7 +7,7 @@ const query = gql\`query foo{field1 field2 field3}\`;"
 
 exports[`produces a working kitchen sink query 1`] = `
 "
-const query = gql\`query GetArticles($first: Int!){contents(types: [Article] first: $first){edges{node{type ... on Article{title description}... PublishDate}}}} fragment PublishDate on PublishableInterface{publishedAt}\`;"
+const query = gql\`query GetArticles($first: Int!){contents(types: [Article] first: $first){edges{node{type...on Article{title description}...PublishDate}}}}fragment PublishDate on PublishableInterface{publishedAt}\`;"
 `;
 
 exports[`strips commas 1`] = `
