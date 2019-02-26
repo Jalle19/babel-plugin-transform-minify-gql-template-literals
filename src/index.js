@@ -1,12 +1,12 @@
 module.exports = ({ types: t }) => {
-  const minifyRaw = (raw) => {
-    let minified = raw;
+  const minifyValue = (value) => {
+    let minified = value;
 
     // Start by stripping commas and comments
     minified = minified.replace(/,/g, '');
     minified = minified.replace(/#(.*)/g, '');
 
-    // Converti all whitespace to spaces
+    // Convert all whitespace to spaces
     minified = minified.replace(/[\s]+/g, ' ');
 
     // Strip spaces around {, }, :, [, ], and ...
@@ -18,18 +18,25 @@ module.exports = ({ types: t }) => {
     return minified;
   };
 
+  const minifyTemplateElement = (key, templateElement) => {
+    if (templateElement.value[key]) {
+      templateElement.value[key] = minifyValue(templateElement.value[key]);
+    }
+  };
+
   return {
     visitor: {
       TaggedTemplateExpression: (path) => {
         const node = path.node;
 
         // Only operate on gql template literals
-        if (t.isIdentifier(node.tag, { name: "gql" })) {
-          for (let element of node.quasi.quasis) {
-            element.value.raw = minifyRaw(element.value.raw);
+        if (t.isIdentifier(node.tag, { name: 'gql' })) {
+          for (let templateElement of node.quasi.quasis) {
+            minifyTemplateElement('raw', templateElement);
+            minifyTemplateElement('cooked', templateElement);
           }
         }
       }
     }
-  }
+  };
 };
