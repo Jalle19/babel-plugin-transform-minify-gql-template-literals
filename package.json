@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-transform-minify-gql-template-literals",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Babel plugin that minifies gql template literals",
   "main": "src/index.js",
   "repository": "https://github.com/Jalle19/babel-plugin-transform-minify-gql-template-literals",
