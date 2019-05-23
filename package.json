@@ -8,8 +8,11 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "babel-core": "^6.26.3",
+    "@babel/core": "^7.4.5",
     "jest": "^23.6.0"
+  },
+  "peerDependencies": {
+    "babel-core": "6.x || ^7.0.0-bridge.0"
   },
   "scripts": {
     "test": "jest"
